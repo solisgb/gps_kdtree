@@ -12,20 +12,19 @@ DB = r"""\\intsrv1008\SGD\00_Proyectos\42141\100_TRABAJO\100_10_DOC_COMUN\
 # casa
 DB = r"""E:\BBDD\VEGA_MEDIA_GPS_2015-18.accdb"""
 
-"""Select Puntos Seleccionados para formar el kdtree
-   El resto de puntos se encuentran a pequeña distancia de los  los
-      puntos seleccionados"""
+"""Cluster seleccionados"""
 SELECT_PS = """SELECT ID, FECHA, NOMBRE, Z, X, Y
               FROM MEDIDAS_TODAS
               WHERE FECHA>=#1/31/2018# And FECHA<#2/1/2018#"""
 
 """Todas las medidas GPS"""
 SELECT_D = """SELECT ID, FECHA, NOMBRE, Z, X, Y
-              FROM MEDIDAS_TODAS"""
+              FROM MEDIDAS_TODAS
+              ORDER BY FECHA"""
 
 """distancia máxima entre los puntos que forman el kdtree y los puntos
    con los que se hace el query"""
-DISTANCE = 1.0
+DISTANCE = 0.5
 
 """Tamaño del bufer para escribir el fichero de resultados"""
 BUFSIZE = 1024000
